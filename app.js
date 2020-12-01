@@ -57,9 +57,20 @@ function appenditem(pushItem) {
                             </div>
                         </a>`;
 
+        let tfListView=`<div class="tflistView">
+                            <ul><li>${data.title}</li></ul>
+                        </div>`                
+
         $('.mainWrapperTaxfax').append(appendData);
+        $('.tfListViewWrapper').append(tfListView);
     }); //pushItem Map
 } // function appenditem
+
+// BUTTON HIDE AND SHOW
+$("#taxFaxButton").click(function(){
+    $(".mainWrapperTaxfax").toggleClass("tfHide");
+    $(".tfListViewWrapper").toggleClass("tfShow");
+});
 
 function getIcon(data){
     switch(data) {
