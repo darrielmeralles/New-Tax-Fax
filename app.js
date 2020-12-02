@@ -164,7 +164,7 @@ function getIcon(data){
             listIcon = "fas fa-wine-glass";
         break;
         default:
-            monthData = "fas fa-file-alt";
+            listIcon = "fas fa-file-alt";
     }                             
 }//DifineMonth
 
