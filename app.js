@@ -25,7 +25,6 @@
 
 $.ajax({
     url:"https://raw.githubusercontent.com/darrielmeralles/New-Tax-Fax/main/tax-fax.json",
-    // url:"tax-fax.json",
     method:"GET",
     crossdomain:true,
     dataType: 'json',
@@ -45,9 +44,13 @@ $.ajax({
 
 function appenditem(pushItem) {
     pushItem.map(function(data) {
-        // console.log(data)
+
+        //GETTING TITLE AND CONVERT TO A PERMALINK
+        let titleLink = data.title;
+        let iconLink = titleLink.split(' ').join('_').toLowerCase();
+
         getIcon(data.title);
-        let appendData=`<a href="" class="taxFaxCon">
+        let appendData=`<a href="http://smithjones.cchifirm.com.au/tax_facts_db_aus/${iconLink}?s=1e7238e1-4822-48a1-88b4-a23236332243&t=767&o=1003" class="taxFaxCon" target="_blank">
                             <div class="taxMaincon">
                                 <div class="taxFaxWrap">
                                     <span class="taxfaxIcon"><i class="${listIcon}"></i></span>
@@ -56,7 +59,7 @@ function appenditem(pushItem) {
                             </div>
                         </a>`;
 
-        let tfListView=`<li><a href="">${data.title}</a></li>`                
+        let tfListView=`<li><a href="http://smithjones.cchifirm.com.au/tax_facts_db_aus/${iconLink}?s=1e7238e1-4822-48a1-88b4-a23236332243&t=767&o=1003" target="_blank">${data.title}</a></li>`                
 
         $('.mainWrapperTaxfax').append(appendData);
         $('.tfListViewWrapper .tflistView ul').append(tfListView);
