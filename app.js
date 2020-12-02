@@ -1,35 +1,37 @@
 // NOTE NG KA ERROR PO  SA CONNECTION GINAMIT KO PO MUNA ANG LUMANG AJAX FOR NOW  ETO PO ANG ERROR https://prnt.sc/vt47m6
 
-let getKeyDates = doAjax({
-    url:`actions.php`,
-    type: 'POST',
-    data:JSON.stringify({
-        'action':'Get Key Dates',
-        'country':'nz'//au or nz
-    })
-});
+// let getKeyDates = doAjax({
+//     url:`actions.php`,
+//     type: 'POST',
+//     data:JSON.stringify({
+//         'action':'Get Key Dates',
+//         'country':'nz'//au or nz
+//     })
+// });
 
-getKeyDates.then(data=>{
-    console.log(data,'dATA');
-    let resp = JSON.parse(data);
-    console.log(data,'weak');
-    if(resp.status){
-        let keyDates = resp.response.data;
-        keyDates.map(function(i){
+// getKeyDates.then(data=>{
+//     console.log(data,'dATA');
+//     let resp = JSON.parse(data);
+//     console.log(data,'weak');
+//     if(resp.status){
+//         let keyDates = resp.response.data;
+//         keyDates.map(function(i){
            
-        });
-    }else{
-        console.log(resp);
-    }
-});
-
+//         });
+//     }else{
+//         console.log(resp);
+//     }
+// });
 
 $.ajax({
-    url:"tax-fax.json",
+    url:"https://raw.githubusercontent.com/darrielmeralles/New-Tax-Fax/main/tax-fax.json",
+    // url:"tax-fax.json",
     method:"GET",
     crossdomain:true,
+    dataType: 'json',
     success:function(response){
-        let output = response.data;  
+        let output = response.data; 
+        console.log(output, "responce"); 
         let pushItem = [];
                output.map(function(i){
                  let title =  i.title;
@@ -67,7 +69,7 @@ $("#taxFaxButton").click(function(){
 
     let btnTxt = $(".mainWrapperTaxfax").hasClass( "tfHide" );
     let btn = $("#taxFaxButton button");
-    
+
     if(btnTxt === true){
         $(".tfMainContainer h3").text("Tax Fax");
         btn.text("View Basic Tax Facts layout");
