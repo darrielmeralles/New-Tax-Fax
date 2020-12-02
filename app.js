@@ -23,15 +23,19 @@
 //     }
 // });
 
+
+
+// let taxFaxUrl = "https://raw.githubusercontent.com/darrielmeralles/New-Tax-Fax/main/nz_taxfacts.json"
+let taxFaxUrl = "https://raw.githubusercontent.com/darrielmeralles/New-Tax-Fax/main/au_taxfacts.json"
+
 $.ajax({
-    url:"https://raw.githubusercontent.com/darrielmeralles/New-Tax-Fax/main/nz_taxfacts.json",
-    // url:"https://raw.githubusercontent.com/darrielmeralles/New-Tax-Fax/main/tax-fax.json",
+    url: taxFaxUrl,
     method:"GET",
     crossdomain:true,
     dataType: 'json',
     success:function(response){
         let output = response.data; 
-        console.log(output, "responce"); 
+        console.log(output, "responce");
         let pushItem = [];
                output.map(function(i){
                  let title =  i.title;
@@ -50,18 +54,19 @@ function appenditem(pushItem) {
         let titleLink = data.title;
         let iconLink = titleLink.split(' ').join('_').toLowerCase();
 
-        getIcon(data.title);
+        taxFaxUrl.includes("au") ? getIconAu(titleLink) : getIconNz(titleLink);
+
         let appendData=`<a href="http://smithjones.cchifirm.com.au/tax_facts_db_aus/${iconLink}?s=1e7238e1-4822-48a1-88b4-a23236332243&t=767&o=1003" class="taxFaxCon" target="_blank">
-                            <div class="taxMaincon">
-                                <div class="taxFaxWrap">
-                                    <span class="taxfaxIcon"><i class="${listIcon}"></i></span>
-                                    <span class="taxTitle">${data.title}</span>
-                                </div>
-                            </div>
-                        </a>`;
+                                    <div class="taxMaincon">
+                                        <div class="taxFaxWrap">
+                                            <span class="taxfaxIcon"><i class="${listIcon}"></i></span>
+                                            <span class="taxTitle">${data.title}</span>
+                                        </div>
+                                    </div>
+                                </a>`;
 
-        let tfListView=`<li><a href="http://smithjones.cchifirm.com.au/tax_facts_db_aus/${iconLink}?s=1e7238e1-4822-48a1-88b4-a23236332243&t=767&o=1003" target="_blank">${data.title}</a></li>`                
-
+                let tfListView=`<li><a href="http://smithjones.cchifirm.com.au/tax_facts_db_aus/${iconLink}?s=1e7238e1-4822-48a1-88b4-a23236332243&t=767&o=1003" target="_blank">${data.title}</a></li>` 
+                
         $('.mainWrapperTaxfax').append(appendData);
         $('.tfListViewWrapper .tflistView ul').append(tfListView);
 
@@ -87,9 +92,9 @@ $("#taxFaxButton").click(function(){
    
 });
 
-function getIcon(data){
+//AU ICONS
+function getIconAu(data){
     switch(data) {
-        //AU JSON
         case "Activity Statement":
             listIcon = "fas fa-file-alt";
         break;
@@ -165,8 +170,12 @@ function getIcon(data){
         case "Wine Equalisation Tax":
             listIcon = "fas fa-wine-glass";
         break;
+    }                             
+}
 
-        //NZ JSON
+//NZ ICONS
+function getIconNz(data){
+    switch(data) {
         case "ACC Premiums":
             listIcon = "fas fa-wine-glass";
         break;
@@ -213,7 +222,7 @@ function getIcon(data){
         default:
             listIcon = "fas fa-file-alt";
     }                             
-}//DifineMonth
+}
 
 /**
  * @param settings
