@@ -30,17 +30,14 @@ $.ajax({
     crossdomain:true,
     success:function(response){
         let output = response.data;  
-        // console.log(output);
         let pushItem = [];
                output.map(function(i){
                  let title =  i.title;
-
                  pushItem.push({
                     'title': title
                 });
                }); //map
          appenditem(pushItem);
-   
     }//success
 });//ajax 
 
@@ -57,7 +54,7 @@ function appenditem(pushItem) {
                             </div>
                         </a>`;
 
-        let tfListView=`<a href=""><li>${data.title}</li></a>`                
+        let tfListView=`<li><a href="">${data.title}</a></li>`                
 
         $('.mainWrapperTaxfax').append(appendData);
         $('.tfListViewWrapper .tflistView ul').append(tfListView);
@@ -67,10 +64,17 @@ function appenditem(pushItem) {
 
 // BUTTON HIDE AND SHOW
 $("#taxFaxButton").click(function(){
-    
+
     let btnTxt = $(".mainWrapperTaxfax").hasClass( "tfHide" );
     let btn = $("#taxFaxButton button");
-    btnTxt ? btn.text("View Basic Tax Facts layout") : btn.text("View Icon Tax Facts layout");
+    
+    if(btnTxt === true){
+        $(".tfMainContainer h3").text("Tax Fax");
+        btn.text("View Basic Tax Facts layout");
+    }else{
+        $(".tfMainContainer h3").text("Tax Fax(Basic)")
+        btn.text("View Icon Tax Facts layout")
+    }
     
     $(".mainWrapperTaxfax").toggleClass("tfHide");
     $(".tfListViewWrapper").toggleClass("tfShow");
