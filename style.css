@@ -82,14 +82,21 @@ a:hover .taxfaxIcon i{
 }
 
 .tfListViewWrapper{
-    /* display: flex; */
     display: none;
     flex-wrap: wrap;
 }
 
-.tflistView {
-    width: 50%;
-    line-height: 0px;
+.tflistView ul{
+    height: 325px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.tflistView ul a{
+    width: 500px;
+    text-decoration: none;
+    color: #444;
+    line-height: 25px;
 }
 
 .tfHide{

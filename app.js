@@ -1,27 +1,27 @@
 // NOTE NG KA ERROR PO  SA CONNECTION GINAMIT KO PO MUNA ANG LUMANG AJAX FOR NOW  ETO PO ANG ERROR https://prnt.sc/vt47m6
 
-// let getKeyDates = doAjax({
-//     url:`actions.php`,
-//     type: 'POST',
-//     data:JSON.stringify({
-//         'action':'Get Key Dates',
-//         'country':'nz'//au or nz
-//     })
-// });
+let getKeyDates = doAjax({
+    url:`actions.php`,
+    type: 'POST',
+    data:JSON.stringify({
+        'action':'Get Key Dates',
+        'country':'nz'//au or nz
+    })
+});
 
-
-// getKeyDates.then(data=>{
-//     let resp = JSON.parse(data);
-//     console.log(data,'weak');
-//     if(resp.status){
-//         let keyDates = resp.response.data;
-//         keyDates.map(function(i){
+getKeyDates.then(data=>{
+    console.log(data,'dATA');
+    let resp = JSON.parse(data);
+    console.log(data,'weak');
+    if(resp.status){
+        let keyDates = resp.response.data;
+        keyDates.map(function(i){
            
-//         });
-//     }else{
-//         console.log(resp);
-//     }
-// });
+        });
+    }else{
+        console.log(resp);
+    }
+});
 
 
 $.ajax({
@@ -30,7 +30,7 @@ $.ajax({
     crossdomain:true,
     success:function(response){
         let output = response.data;  
-        console.log(output);
+        // console.log(output);
         let pushItem = [];
                output.map(function(i){
                  let title =  i.title;
@@ -46,7 +46,7 @@ $.ajax({
 
 function appenditem(pushItem) {
     pushItem.map(function(data) {
-        console.log(data)
+        // console.log(data)
         getIcon(data.title);
         let appendData=`<a href="" class="taxFaxCon">
                             <div class="taxMaincon">
@@ -57,19 +57,24 @@ function appenditem(pushItem) {
                             </div>
                         </a>`;
 
-        let tfListView=`<div class="tflistView">
-                            <ul><li>${data.title}</li></ul>
-                        </div>`                
+        let tfListView=`<a href=""><li>${data.title}</li></a>`                
 
         $('.mainWrapperTaxfax').append(appendData);
-        $('.tfListViewWrapper').append(tfListView);
+        $('.tfListViewWrapper .tflistView ul').append(tfListView);
+
     }); //pushItem Map
 } // function appenditem
 
 // BUTTON HIDE AND SHOW
 $("#taxFaxButton").click(function(){
+    
+    let btnTxt = $(".mainWrapperTaxfax").hasClass( "tfHide" );
+    let btn = $("#taxFaxButton button");
+    btnTxt ? btn.text("View Basic Tax Facts layout") : btn.text("View Icon Tax Facts layout");
+    
     $(".mainWrapperTaxfax").toggleClass("tfHide");
     $(".tfListViewWrapper").toggleClass("tfShow");
+   
 });
 
 function getIcon(data){
@@ -167,6 +172,7 @@ function getIcon(data){
     })
     */
    async function doAjax(settings) {
+      
     let result
     try{
         result = await $.ajax(settings);
@@ -174,4 +180,6 @@ function getIcon(data){
     }catch(error){
         console.log(error)
     }
+
+    console.log(result, 'Result')
 }

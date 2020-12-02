@@ -5,7 +5,8 @@ function getKeyDates($data){
     $curl = curl_init();
 
 	curl_setopt_array($curl, array(
-	  CURLOPT_URL => 'https://zauaedudamedia.blob.core.windows.net/prd/'.$data->country.'_keydates.json',
+	//   CURLOPT_URL => 'https://zauaedudamedia.blob.core.windows.net/prd/'.$data->country.'_keydates.json',
+	  CURLOPT_URL => 'https://zauaedudamedia.blob.core.windows.net/prd/au_keydates.json',
 	  CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -16,7 +17,7 @@ function getKeyDates($data){
 	));
 	
 	//Initiate cURL
-	$resp = curl_exec($curl);
+    $resp = curl_exec($curl);
 	//Check Response Code eg: 240 / 200 / 400 etc.
 	$responseCode = curl_getinfo($curl,CURLINFO_HTTP_CODE);
 	
