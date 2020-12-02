@@ -24,7 +24,8 @@
 // });
 
 $.ajax({
-    url:"https://raw.githubusercontent.com/darrielmeralles/New-Tax-Fax/main/tax-fax.json",
+    url:"https://raw.githubusercontent.com/darrielmeralles/New-Tax-Fax/main/nz_taxfacts.json",
+    // url:"https://raw.githubusercontent.com/darrielmeralles/New-Tax-Fax/main/tax-fax.json",
     method:"GET",
     crossdomain:true,
     dataType: 'json',
@@ -88,6 +89,7 @@ $("#taxFaxButton").click(function(){
 
 function getIcon(data){
     switch(data) {
+        //AU JSON
         case "Activity Statement":
             listIcon = "fas fa-file-alt";
         break;
@@ -163,6 +165,51 @@ function getIcon(data){
         case "Wine Equalisation Tax":
             listIcon = "fas fa-wine-glass";
         break;
+
+        //NZ JSON
+        case "ACC Premiums":
+            listIcon = "fas fa-wine-glass";
+        break;
+        case "Depreciation Allowances":
+            listIcon = "fas fa-wine-glass";
+        break;
+        case "Entertainment":
+            listIcon = "fas fa-wine-glass";
+        break;
+        case "Fringe Benefit Tax":
+            listIcon = "fas fa-wine-glass";
+        break;
+        case "Gifting":
+            listIcon = "fas fa-wine-glass";
+        break;
+        case "Goods and Services Tax":
+            listIcon = "fas fa-wine-glass";
+        break;
+        case "GST and E-Commerce":
+            listIcon = "fas fa-wine-glass";
+        break;
+        case "KiwiSaver":
+            listIcon = "fas fa-wine-glass";
+        break;
+        case "PAYE on Salaries and Wages":
+            listIcon = "fas fa-wine-glass";
+        break;
+        case "Provisional Tax":
+            listIcon = "fas fa-wine-glass";
+        break;
+        case "Resident Withholding Tax (RWT)":
+            listIcon = "fas fa-wine-glass";
+        break;
+        case "Tax Credits for Donations":
+            listIcon = "fas fa-wine-glass";
+        break;
+        case "Taxpayer Penalties":
+            listIcon = "fas fa-wine-glass";
+        break;
+        case "Working for Families Tax Credits":
+            listIcon = "fas fa-wine-glass";
+        break;
+
         default:
             listIcon = "fas fa-file-alt";
     }                             
