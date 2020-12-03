@@ -6,6 +6,7 @@ body{
 .tfMainContainer h3{
     font-size: 40px !important;
     margin-top: 0px;
+    position: relative;
 }
 
 .mainWrapperTaxfax{
@@ -119,4 +120,14 @@ a:hover .taxfaxIcon i{
 
 .tfShow{
     display: flex !important;
+}
+
+.descCons{
+    height: auto;
+    width: 100%;
+    /* background: red; */
+    position: relative;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
 }
