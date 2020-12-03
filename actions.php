@@ -9,7 +9,7 @@ $data = json_decode($payload);
 if(gettype($data) !== 'object') die(json_encode(["status"=>false,"response"=>"Data is not an object"]));
 
 switch ($data->action) {
-    case 'Get Key Dates':
+    case 'Get Tax Fax':
         print_r(json_encode(getKeyDates($data)));
     break;
 

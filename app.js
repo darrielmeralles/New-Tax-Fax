@@ -1,51 +1,30 @@
-// NOTE NG KA ERROR PO  SA CONNECTION GINAMIT KO PO MUNA ANG LUMANG AJAX FOR NOW  ETO PO ANG ERROR https://prnt.sc/vt47m6
+let getKeyDates = doAjax({
+    url:`actions.php`,
+    type: 'POST',
+    data:JSON.stringify({
+        'action':'Get Tax Fax',
+        'country':'nz'//au or nz
+    })
+});
 
-// let getKeyDates = doAjax({
-//     url:`actions.php`,
-//     type: 'POST',
-//     data:JSON.stringify({
-//         'action':'Get Key Dates',
-//         'country':'nz'//au or nz
-//     })
-// });
-
-// getKeyDates.then(data=>{
-//     console.log(data,'dATA');
-//     let resp = JSON.parse(data);
-//     console.log(data,'weak');
-//     if(resp.status){
-//         let keyDates = resp.response.data;
-//         keyDates.map(function(i){
-           
-//         });
-//     }else{
-//         console.log(resp);
-//     }
-// });
-
-
-
-// let taxFaxUrl = "https://raw.githubusercontent.com/darrielmeralles/New-Tax-Fax/main/nz_taxfacts.json"
-let taxFaxUrl = "https://raw.githubusercontent.com/darrielmeralles/New-Tax-Fax/main/au_taxfacts.json"
-
-$.ajax({
-    url: taxFaxUrl,
-    method:"GET",
-    crossdomain:true,
-    dataType: 'json',
-    success:function(response){
-        let output = response.data; 
-        console.log(output, "responce");
+getKeyDates.then(data=>{
+    console.log(data,'dATA');
+    let resp = JSON.parse(data);
+    console.log(data,'weak');
+    if(resp.status){
+        let keyDates = resp.response.data;
         let pushItem = [];
-               output.map(function(i){
-                 let title =  i.title;
-                 pushItem.push({
-                    'title': title
-                });
-               }); //map
-         appenditem(pushItem);
-    }//success
-});//ajax 
+        keyDates.map(function(i){
+            let title =  i.title;
+            pushItem.push({
+               'title': title
+           });
+        });
+        appenditem(pushItem);
+    }else{
+        console.log(resp);
+    }
+});
 
 function appenditem(pushItem) {
     pushItem.map(function(data) {
@@ -54,7 +33,10 @@ function appenditem(pushItem) {
         let titleLink = data.title;
         let iconLink = titleLink.split(' ').join('_').toLowerCase();
 
-        taxFaxUrl.includes("au") ? getIconAu(titleLink) : getIconNz(titleLink);
+        // taxFaxUrl.includes("au") ? getIconAu(titleLink) : getIconNz(titleLink);
+
+        // getIconAu(titleLink);
+        getIconNz(titleLink)
 
         let appendData=`<a href="http://smithjones.cchifirm.com.au/tax_facts_db_aus/${iconLink}?s=1e7238e1-4822-48a1-88b4-a23236332243&t=767&o=1003" class="taxFaxCon" target="_blank">
                                     <div class="taxMaincon">
