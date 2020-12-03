@@ -34,26 +34,39 @@ function appenditem(pushItem) {
         //GETTING TITLE AND CONVERT TO A PERMALINK
         let titleLink = data.title;
         let dataDesc = data.description;
-        let iconLink = titleLink.split(' ').join('_').toLowerCase();
 
         taxFaxCountry.includes("au") ? getIconAu(titleLink) : getIconNz(titleLink);
 
-        let appendData=`<a href="http://smithjones.cchifirm.com.au/tax_facts_db_aus/${iconLink}?s=1e7238e1-4822-48a1-88b4-a23236332243&t=767&o=1003" class="taxFaxCon" target="_blank">
-                                    <div class="taxMaincon">
-                                        <div class="taxFaxWrap">
-                                            <span class="taxfaxIcon"><i class="${listIcon}"></i></span>
-                                            <span class="taxTitle">${data.title}</span>
-                                        </div>
-                                    </div>
-                                </a>`;
+        let appendData=`<div class="taxMaincon taxFaxCon" data-title="${data.title}">
+                            <div class="hiddenDesc">${dataDesc}</div>
+                            <div class="taxFaxWrap">
+                                <span class="taxfaxIcon"><i class="${listIcon}"></i></span>
+                                <span class="taxTitle">${data.title}</span>
+                             </div>
+                        </div>`;
 
-        let tfListView=`<li><a href="http://smithjones.cchifirm.com.au/tax_facts_db_aus/${iconLink}?s=1e7238e1-4822-48a1-88b4-a23236332243&t=767&o=1003" target="_blank">${data.title}</a></li>` 
-                
+        let tfListView=`<div class="taxMaincon listView" data-title="${data.title}">
+                            <div class="hiddenDesc">${dataDesc}</div>
+                            <div class="taxFaxWraplist">
+                                <span class="taxTitle">${data.title}</span>
+                            </div>
+                        </div>`; 
+
         $('.mainWrapperTaxfax').append(appendData);
-        $('.tfListViewWrapper .tflistView ul').append(tfListView);
-        $('.descCons .desWrap .desAppendCon .contentCon').append(remoV(dataDesc));
-
+        $('.tfListViewWrapper .tflistView').append(tfListView);  
     }); //pushItem Map
+
+    //CLICK TO OPEN DESCRIPTION ICON LAYOUT
+    $('.taxMaincon').on('click', function(){
+        let conTitle =  $(this).attr('data-title');
+        let conDesc = $(this).children().first().html();
+        let contentTf = `<div>
+                    <h4>${conTitle}</h4>
+                    <div>${conDesc}</div>    
+                </div>`
+        $('.descCons').show();
+        $('.descCons .desWrap .desAppendCon .contentCon').html(remoV(contentTf));
+    });
 } // function appenditem
 
 // BUTTON HIDE AND SHOW
@@ -75,10 +88,9 @@ $("#taxFaxButton").click(function(){
    
 });
 
-
 $("#closeBtn").click(function(){
     $(".descCons").hide();
-  });
+});
 
 //REMOVE /N IN DESCRIPTION
 function remoV(str){

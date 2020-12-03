@@ -31,6 +31,7 @@ body{
     text-align: center;
     /* background: #eee; */
     padding: 8px;
+    cursor: pointer;
 }
 .taxFaxCon:hover{
     background: #eee;
@@ -71,7 +72,7 @@ a:hover .taxfaxIcon i{
     font-size: 14px;
     line-height: normal;
     font-weight: 700;
-    color: #444;
+    color: #444;;
 }
 
 .taxFaxButton button{
@@ -99,19 +100,30 @@ a:hover .taxfaxIcon i{
     flex-direction: column;
     flex-wrap: wrap;
 }
+
+.listView{
+    width: 100%;
+}
+
+.tflistView{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 450px;
+}
 .tflistView ul li{
     width: 500px;
     color: #444;
     line-height: 25px;
 }
 
-.tflistView ul li a{
+.tflistView ul li a, .taxFaxWraplist span{
     color: #e56600;
     text-decoration: none;
 }
 
-.tflistView ul li a:hover, .desWrap i:hover{
-    color: #8F3F00
+.tflistView ul li a:hover, .desWrap i:hover, .taxFaxWraplist span:hover{
+    color: #8F3F00;
 }
 
 .tfHide{
@@ -130,6 +142,7 @@ a:hover .taxfaxIcon i{
     height: 100%;
     width: 100%;
     transform: translate(-50%, -50%);
+    display: none;
 }
 
 .desAppendCon{
@@ -155,4 +168,27 @@ a:hover .taxfaxIcon i{
     display: flex;
     justify-content: flex-end;
     align-items: center;
+}
+
+.hiddenDesc{
+    display: none !important;
+}
+
+.taxFaxWraplist span{
+    cursor: pointer;
+    line-height: 33px;
+}
+
+.contentCon h4{
+    font-size: 30px !important;
+    color: #e56600;
+}
+
+.contentCon p a, .contentCon ul li a{
+    text-decoration: none !important;
+    color: #e56600;
+    font-weight: bold;
+}
+.contentCon p a:hover, .contentCon ul li a:hover{
+    color:  #8F3F00;
 }
