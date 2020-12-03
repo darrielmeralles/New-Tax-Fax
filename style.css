@@ -110,7 +110,7 @@ a:hover .taxfaxIcon i{
     text-decoration: none;
 }
 
-.tflistView ul li a:hover{
+.tflistView ul li a:hover, .desWrap i:hover{
     color: #8F3F00
 }
 
@@ -123,11 +123,36 @@ a:hover .taxfaxIcon i{
 }
 
 .descCons{
-    height: auto;
-    width: 100%;
-    /* background: red; */
-    position: relative;
-    /* top: 50%;
+    background: rgba(1, 1, 1, 0.8);;
+    top: 50%;
+    position: fixed;
     left: 50%;
-    transform: translate(-50%, -50%); */
+    height: 100%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.desAppendCon{
+    height: 500px;
+    background: #ffffff;
+    width: 850px;
+    overflow: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+}
+
+.desWrap i{
+    color: #e56600;
+    font-size: 30px;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.closeIconCOn{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }

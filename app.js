@@ -51,7 +51,7 @@ function appenditem(pushItem) {
                 
         $('.mainWrapperTaxfax').append(appendData);
         $('.tfListViewWrapper .tflistView ul').append(tfListView);
-        $('.descCons .desWrap').append(remoV(dataDesc));
+        $('.descCons .desWrap .desAppendCon .contentCon').append(remoV(dataDesc));
 
     }); //pushItem Map
 } // function appenditem
@@ -74,6 +74,11 @@ $("#taxFaxButton").click(function(){
     $(".tfListViewWrapper").toggleClass("tfShow");
    
 });
+
+
+$("#closeBtn").click(function(){
+    $(".descCons").hide();
+  });
 
 //REMOVE /N IN DESCRIPTION
 function remoV(str){
