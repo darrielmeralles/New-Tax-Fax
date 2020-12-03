@@ -1,6 +1,6 @@
 <?php 
 // Init Everything
-require('keydates.php');
+require('taxfax.php');
 
 // Catch Payload Object from Ajax
 $payload = @file_get_contents("php://input");
@@ -10,7 +10,7 @@ if(gettype($data) !== 'object') die(json_encode(["status"=>false,"response"=>"Da
 
 switch ($data->action) {
     case 'Get Tax Fax':
-        print_r(json_encode(getKeyDates($data)));
+        print_r(json_encode(getTaxFax($data)));
     break;
 
     default:

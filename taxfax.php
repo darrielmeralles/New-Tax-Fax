@@ -1,6 +1,6 @@
 <?php
 
-function getKeyDates($data){
+function getTaxFax($data){
 
     $curl = curl_init();
 

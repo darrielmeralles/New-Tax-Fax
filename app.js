@@ -1,4 +1,4 @@
-let getKeyDates = doAjax({
+let getTaxFax = doAjax({
     url:`actions.php`,
     type: 'POST',
     data:JSON.stringify({
@@ -7,14 +7,14 @@ let getKeyDates = doAjax({
     })
 });
 
-getKeyDates.then(data=>{
+getTaxFax.then(data=>{
     console.log(data,'dATA');
     let resp = JSON.parse(data);
     console.log(data,'weak');
     if(resp.status){
-        let keyDates = resp.response.data;
+        let taxFax = resp.response.data;
         let pushItem = [];
-        keyDates.map(function(i){
+        taxFax.map(function(i){
             let title =  i.title;
             pushItem.push({
                'title': title
