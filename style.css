@@ -192,3 +192,18 @@ a:hover .taxfaxIcon i{
 .contentCon p a:hover, .contentCon ul li a:hover{
     color:  #8F3F00;
 }
+
+.desAppendCon::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgb(255, 255, 255);
+}
+.desAppendCon::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+     border-radius: 10px;
+     background-color: rgb(255, 255, 255);
+}
+.desAppendCon::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #e56600;
+}
