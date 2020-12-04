@@ -7,6 +7,8 @@ body{
     font-size: 40px !important;
     margin-top: 0px;
     position: relative;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: bold;
 }
 
 .mainWrapperTaxfax{
@@ -51,9 +53,14 @@ body{
     line-height: normal;
     color: #e56600;
     margin-bottom: 8px;
+    transition: 0.5s ease-in-out !important;
 }
-a:hover .taxfaxIcon i{
+.taxMaincon:hover .taxfaxIcon i{
     color: #8F3F00;
+}
+
+.taxMaincon{
+    transition: 0.5s ease-in-out !important;
 }
 
 .fa, .fas {
@@ -73,6 +80,7 @@ a:hover .taxfaxIcon i{
     line-height: normal;
     font-weight: 700;
     color: #444;;
+    font-family: 'PT Sans', sans-serif;
 }
 
 .taxFaxButton button{
@@ -102,7 +110,7 @@ a:hover .taxfaxIcon i{
 }
 
 .listView{
-    width: 100%;
+    width: 400px;
 }
 
 .tflistView{
@@ -120,6 +128,7 @@ a:hover .taxfaxIcon i{
 .tflistView ul li a, .taxFaxWraplist span{
     color: #e56600;
     text-decoration: none;
+    font-family: 'PT Sans', sans-serif;
 }
 
 .tflistView ul li a:hover, .desWrap i:hover, .taxFaxWraplist span:hover{
@@ -171,6 +180,7 @@ a:hover .taxfaxIcon i{
 .taxFaxWraplist span{
     cursor: pointer;
     line-height: 33px;
+    font-weight: 700;
 }
 
 .contentCon h4{
