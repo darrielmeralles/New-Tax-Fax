@@ -61,10 +61,11 @@ function appenditem(pushItem) {
         let conTitle =  $(this).attr('data-title');
         let conDesc = $(this).children().first().html();
         let contentTf = `<div>
-                    <h4>${conTitle}</h4>
-                    <div>${conDesc}</div>    
-                </div>`
+                            <h3>${conTitle}</h3>
+                            <div>${conDesc}</div>    
+                        </div>`
         $('.descCons').show();
+        $('.listIconMain').hide();
         $('.descCons .desWrap .desAppendCon .contentCon').html(remoV(contentTf));
     });
 } // function appenditem
@@ -88,8 +89,9 @@ $("#taxFaxButton").click(function(){
    
 });
 
-$("#closeBtn").click(function(){
+$("#taxFaxButton2").click(function(){
     $(".descCons").hide();
+    $('.listIconMain').show();
 });
 
 //REMOVE /N IN DESCRIPTION
